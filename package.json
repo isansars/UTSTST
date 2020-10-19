@@ -12,6 +12,7 @@
     "@azure/cosmos": "^3.9.2",
     "audit": "0.0.6",
     "build": "^0.1.4",
+    "builder": "^5.0.0",
     "cosmos": "^0.1.2"
   },
   "devDependencies": {
