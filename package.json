@@ -5,5 +5,12 @@
   "scripts": {
     "start": "func start",
     "test": "echo \"No tests yet...\""
+  },
+  "dependencies": {
+    "@azure/cosmos": "^3.9.2",
+    "cosmos": "^0.1.2"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2"
   }
 }
