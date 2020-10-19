@@ -1,22 +1,38 @@
-const cosmos = require('@azure/cosmos');
-const { CosmosClient } = cosmos;
+const CosmosClient = require('@azure/cosmos').CosmosClient
 
-const client = new CosmosClient(process.env.db18218026);
-const container = client.database('UTSTS').container('UTSTS1');
+const client = new CosmosClient(process.env.db18218026)
+const database = client.database('UTSTST')
+const container = database.container('UTSTST1')
 
 module.exports = async function (context, req) {
-    context.log('JavaScript HTTP trigger function processed a request.');
+    try {
+        const first = req.body.first
+        const last = req.body.last
 
-    const name = (req.query.name || (req.body && req.body.name));
-    const responseMessage = name
-        ? "Hello, " + name + ". This HTTP triggered function executed successfully."
-        : "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.";
-    
-    const newItem = { name : name, time: Date() };
-    const { resource: createdItem } = await container.items.create(newItem);
-    
-    context.res = {
-        // status: 200, /* Defaults to 200 */
-        body: responseMessage
-    };
+        if (first && last) {
+        const payload = {
+            name: `${first} ${last}`
+        }
+
+        await container.items.create(payload)
+        context.res = {
+            status: 200,
+            body: {
+                name: payload.name
+            }
+        }
+        } else {
+        context.res = {
+            status: 400,
+            body: {
+                message: "Required body not found"
+            }
+        }
+        }
+    } catch (err) {
+        context.res = {
+        status: 500,
+        body: err.message
+        }
+    }
 }

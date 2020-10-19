@@ -38,7 +38,7 @@
                 redirect: 'follow'
             };
             // make API call with parameters and use promises to get response
-            fetch("https://hellotstfunction.azurewebsites.net/api/HttpTrigger1?code=h/MCyVUU4d0aDrSAdQha3Elq/6OnleTfGyUAG837a1bkdaiKVh1NDg==", requestOptions)
+            fetch("https://funcfixsss.azurewebsites.net/api/UTSFunc", requestOptions)
             .then(response => response.text())
             .then(result => alert(JSON.parse(result).body))
             .catch(error => console.log('error', error));
