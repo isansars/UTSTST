@@ -4,9 +4,7 @@
   "description": "",
   "scripts": {
     "start": "func start",
-    "test": "echo \"No tests yet...\"",
-    "build": "node build/build.js",
-    "postinstall": "npm run build"
+    "test": "echo \"No tests yet...\""
   },
   "dependencies": {
     "@azure/cosmos": "^3.9.2",
